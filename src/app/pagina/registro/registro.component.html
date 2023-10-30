@@ -1,1 +1,55 @@
-<p>registro works!</p>
+<form #f="ngForm" (ngSubmit)="registrar()">
+    <div>
+        <label>Cédula: </label>
+        <input type="text" name="cedulaPaciente" [(ngModel)]="registroPacienteDTO.cedulaPaciente" />
+    </div>
+    <div>
+        <label>Nombre: </label>
+        <input type="text" name="nombreCompleto" [(ngModel)]="registroPacienteDTO.nombreCompleto" />
+    </div>
+    <div>
+        <label>Teléfono: </label>
+        <input type="text" name="telefono" [(ngModel)]="registroPacienteDTO.telefono" />
+    </div>
+    <div>
+        <label >Foto: </label>
+        <input type="file" (change)="onFileChange($event)" />
+        </div>
+    <div>
+        <label>Ciudad: </label>
+        <select name="ciudadResidencia" required [(ngModel)]="registroPacienteDTO.ciudadResidencia">
+            <option value="" selected>Seleccione una ciudad</option>
+            <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Fecha de nacimiento: </label>
+        <input type="date" name="fechaNacimiento" [(ngModel)]="registroPacienteDTO.fechaNacimiento" />
+    </div>
+    <div>
+        <label>Alergias: </label>
+        <input type="text" name="alergias" [(ngModel)]="registroPacienteDTO.alergias" />
+    </div>
+    <div>
+        <label>EPS: </label>
+        <input type="text" name="eps" [(ngModel)]="registroPacienteDTO.eps" />
+    </div>
+    <div>
+        <label>Tipo de sangre: </label>
+        <input type="text" name="rh" [(ngModel)]="registroPacienteDTO.rh" />
+    </div>
+    <div>
+        <label>Correo electrónico: </label>
+        <input type="email" name="email" [(ngModel)]="registroPacienteDTO.email" />
+    </div>
+    <div>
+        <label>Contraseña: </label>
+        <input type="password" name="password" [(ngModel)]="registroPacienteDTO.password" />
+    </div>
+    <div>
+        <label>Repetir contraseña: </label>
+        <input type="password" name="confirmarPassword" [(ngModel)]="registroPacienteDTO.confirmarPassword" required />
+    </div>
+    <p *ngIf="!sonIguales()">Las contraseñas no coinciden</p>
+    <button type="submit" [disabled]="f.invalid || !sonIguales()">Registrarse</button>
+</form>
