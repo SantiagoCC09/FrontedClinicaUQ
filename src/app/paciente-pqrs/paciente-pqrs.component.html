@@ -1,1 +1,21 @@
-<p>paciente-pqrs works!</p>
+<!-- pqrs-form.component.html -->
+
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-4">PQRS Chat</h1>
+  
+    <div class="chat-box">
+      <div *ngFor="let mensaje of mensajes" class="mensaje">
+        <strong>{{ mensaje.emisor }}:</strong> {{ mensaje.contenido }}
+      </div>
+    </div>
+  
+    <form (ngSubmit)="enviarPQRS()" class="mt-3">
+      <div class="form-group">
+        <label for="descripcion">Mensaje:</label>
+        <textarea id="descripcion" name="descripcion" [(ngModel)]="descripcion" class="form-control" rows="3" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+    </form>
+  </div>
+  

@@ -28,6 +28,22 @@ activeTab: string = '';
 
         this.router.navigate(['/paciente-perfil']);
 
+      }else{
+        if (tab == 'citas'){
+          this.router.navigate(['/paciente-citas']);
+
+        }else{
+
+          if (tab == 'pqr'){
+
+            this.router.navigate(['/paciente-pqrs']);
+
+          }else{
+            this.router.navigate(['/paciente-historial']);
+
+
+          }
+        }
       }
     }
     

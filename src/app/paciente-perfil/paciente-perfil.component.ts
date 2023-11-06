@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paciente-perfil',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./paciente-perfil.component.css']
 })
 export class PacientePerfilComponent {
+
+  constructor(private router: Router) {}
   nombre: string = "";
   email: string = "";
   fechaNacimiento: string = "";
@@ -20,4 +23,12 @@ export class PacientePerfilComponent {
     console.log("Datos actualizados");
   }
 
+  regresarPacienteGeneral(): void{
+
+  this.router.navigate(['/paciente']);
+
+
+
+
+}
 }

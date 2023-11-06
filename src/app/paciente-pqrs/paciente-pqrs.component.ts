@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class PacientePqrsComponent {
 
+  
+  asunto: string = '';
+  descripcion: string = '';
+  mensajes: { emisor: string; contenido: string }[] = [];
+
+  enviarPQRS() {
+    // Agrega el mensaje del usuario a la lista de mensajes
+    this.mensajes.push({ emisor: 'Usuario', contenido: this.descripcion });
+    
+    // Simula una respuesta automática
+    this.mensajes.push({ emisor: 'Asistente', contenido: 'Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.' });
+
+    // Limpia el campo de descripción después de enviar el mensaje
+    this.descripcion = '';
+  }
 }
