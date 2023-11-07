@@ -23,6 +23,13 @@ export class LoginComponent {
 
       this.router.navigate(['/paciente']);
 
+    }else{
+
+      if (email == "b" &&  password == "b"){
+
+        this.router.navigate(['/medico']);
+
+      }
     }
 
 

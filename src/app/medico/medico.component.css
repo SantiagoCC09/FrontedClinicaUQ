@@ -1,0 +1,62 @@
+/* Estilos para el carousel */
+#carouselExampleIndicators {
+    margin-top: 20px; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  
+  .carousel-inner {
+    border-radius: 10px; 
+    overflow: hidden; 
+  }
+  
+  .carousel-item img {
+    width: 100%; /* Imágenes ocupan el 100% del ancho del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #007bff; 
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #ffffff; 
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background-color: #0056b3; 
+  }
+  /* Estilos para el footer */
+footer {
+    background-color: #007bff; /* Color de fondo del footer */
+    color: #ffffff; /* Color del texto */
+    text-align: center; /* Centrar el contenido del footer */
+    padding: 5px; /* Espaciado interno */
+    position: fixed; /* Fijar el footer en la parte inferior de la pantalla */
+    width: 100%; /* Ancho del footer al 100% de la pantalla */
+    bottom: 0; /* Colocar en la parte inferior */
+  }
+  
+  footer p {
+    margin-bottom: 0; /* Eliminar el margen inferior del párrafo */
+  }
+ 
+  
+  button {
+    padding: 8px 16px; /* Espaciado interno del botón */
+    background-color: #28a745; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    border: none; /* Eliminar el borde del botón */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón sobre el botón */
+  }
+  
+  button:hover {
+    background-color: #218838; /* Color más oscuro al pasar el ratón */
+  }
+  

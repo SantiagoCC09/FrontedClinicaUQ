@@ -1,1 +1,74 @@
-<p>medico works!</p>
+
+<head>
+
+
+
+</head>
+<body>
+<div class="container mt-5 bg-dark text-light p-4">
+    <h1 class="display-4">Perfil de Médico</h1>
+  
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/mi-perfil">Mi Perfil</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/citas">Citas</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/historial">Historial</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/disponibilidad">Disponibilidad</button>
+      </div>
+    </div>
+  
+    <router-outlet></router-outlet>
+  </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://image.isu.pub/110407021828-6f276818f02d48889a65079f47e20b11/jpg/page_1.jpg" width="30" height="600" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.canalcalitv.com/wp-content/uploads/2018/01/medicosssssss-862x460.png" width="30" height="600" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://barcelonamaculafound.org/wp-content/uploads/2018/01/diario-medico-750x506.png" width="30" height="600" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+
+</body>
+
+<footer>
+
+    <p>Clinica XYZ</p>
+    <div>
+
+        <button (click)="regresarMedicoGeneral()">terminarSesion</button>
+
+    </div>
+    
+
+
+</footer>
+
+  
