@@ -12,7 +12,7 @@ constructor(private router: Router) {}
   
   citas = [
     { motivo: 'Consulta general', idPaciente: 123, fecha: '2023-11-06', hora: '10:00 AM', nombrePaciente: 'Juan Pérez', idCita: 456 },
-    // Agrega más citas según la estructura de tu backend
+    // se agregan mas citas
   ];
 
   citaSeleccionada: any;

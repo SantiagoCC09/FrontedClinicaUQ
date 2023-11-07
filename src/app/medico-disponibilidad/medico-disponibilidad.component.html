@@ -1,1 +1,59 @@
-<p>medico-disponibilidad works!</p>
+<div class="container mt-5">
+    <h1 class="display-4">Disponibilidad</h1>
+  
+    <div class="form-group row mt-4">
+      <label for="fechaFiltro" class="col-sm-2 col-form-label">Filtrar por fecha:</label>
+      <div class="col-sm-4">
+        <input type="date" class="form-control" id="fechaFiltro">
+      </div>
+    </div>
+  
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <!-- Aquí pa meter más columnas según los datos del backend -->
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí están las filas de la disponibilidad -->
+          <tr *ngFor="let fila of disponibilidad" (click)="seleccionarFila(fila)" [class.table-active]="fila === filaSeleccionada">
+            <th scope="row">{{ fila.id }}</th>
+            <td>{{ fila.fecha }}</td>
+            <td>{{ fila.hora }}</td>
+            <!-- Aquí se puede Agregar más celdas según los datos del backend -->
+          </tr>
+      
+          <!-- Filas de prueba adicionales -->
+          <tr (click)="seleccionarFila({ id: 101, fecha: '2023-11-15', hora: '10:00 AM' })" [class.table-active]="filaSeleccionada && filaSeleccionada.id === 101">
+            <th scope="row">101</th>
+            <td>2023-11-15</td>
+            <td>10:00 AM</td>
+            <!-- Aquí se puede Agregar más celdas según los datos del backend -->
+          </tr>
+          <tr (click)="seleccionarFila({ id: 102, fecha: '2023-11-16', hora: '02:30 PM' })" [class.table-active]="filaSeleccionada && filaSeleccionada.id === 102">
+            <th scope="row">102</th>
+            <td>2023-11-16</td>
+            <td>02:30 PM</td>
+            <!-- Aquí se puede Agregar más celdas según los datos del backend -->
+          </tr>
+        </tbody>
+      </table>
+    
+  
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-success btn-block">Reservar para día libre</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-danger btn-block">Deshacer</button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="fixed-bottom bg-light p-3 text-center">
+    <button class="btn btn-primary" (click)="regresarMedicoGeneral()">Volver</button>
+  </footer>
+  

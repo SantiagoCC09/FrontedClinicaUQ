@@ -1,1 +1,53 @@
-<p>medico-historial works!</p>
+<!-- historial.component.html -->
+<div class="container mt-5">
+    <h1 class="display-4">Historial</h1>
+  
+    <div class="input-group mb-3">
+      <button class="btn btn-primary" (click)="filtrarPorFecha()">Filtrar por fecha</button>
+      <input type="date" class="form-control" [(ngModel)]="fechaFiltro">
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">MotivoConsulta</th>
+          <th scope="col">nombrePaciente</th>
+          <th scope="col">fecha</th>
+          <th scope="col">hora</th>
+          <th scope="col">detalles</th>
+          <th scope="col">idPaciente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consulta of historial" (click)="seleccionarConsulta(consulta)" [class.table-active]="consulta === consultaSeleccionada">
+          <th scope="row">{{ consulta.id }}</th>
+          <td>{{ consulta.motivoConsulta }}</td>
+          <td>{{ consulta.nombrePaciente }}</td>
+          <td>{{ consulta.fecha }}</td>
+          <td>{{ consulta.hora }}</td>
+          <td>{{ consulta.detalles }}</td>
+          <td>{{ consulta.idPaciente }}</td>
+        </tr>
+
+
+        <tr (click)="seleccionarConsulta({ id: 102, fecha: '2023-11-16', hora: '02:30 PM',motivoConsulta: 'motivosXY',nombrePaciente: 'calamardo', detalles: 'fallo al corazón', idPaciente: '132' })" [class.table-active]="consultaSeleccionada && consultaSeleccionada.id === 102">
+            <th scope="row">102</th>
+            <td>motivosXY</td>
+            <td>calamardo</td>
+            <td>2023-11-16</td>
+            <td>02:30 PM</td>
+            <td>fallo al corazón</td>
+            <td>132</td>
+            <!-- Aquí se puede Agregar más celdas según los datos del backend -->
+          </tr>
+
+
+      </tbody>
+    </table>
+  
+    <footer>
+      <button class="btn btn-primary" (click)="regresarMedicoGeneral()">Volver</button>
+    </footer>
+  </div>
+  
