@@ -1,1 +1,46 @@
-<p>paciente-historial works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Historial</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="display-4 mb-4">Historial</h1>
+
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary mr-2">Filtrar por fecha</button>
+        <button type="button" class="btn btn-primary">Filtrar por ID</button>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of registros" [class.table-primary]="registro === registroSeleccionado" (click)="seleccionarRegistro(registro)">
+            <th scope="row">{{ registro.id }}</th>
+            <td>{{ registro.first }}</td>
+            <td>{{ registro.last }}</td>
+            <td>{{ registro.handle }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <button type="button" (click)="regresarPacienteGeneral()" class="btn btn-secondary">Volver </button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

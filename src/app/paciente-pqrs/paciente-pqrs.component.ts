@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-paciente-pqrs',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./paciente-pqrs.component.css']
 })
 export class PacientePqrsComponent {
-
+  constructor(private router: Router) {}
   
   asunto: string = '';
   descripcion: string = '';
@@ -22,4 +24,14 @@ export class PacientePqrsComponent {
     // Limpia el campo de descripción después de enviar el mensaje
     this.descripcion = '';
   }
+
+
+  regresarPacienteGeneral (){
+
+
+    this.router.navigate(['/paciente']);
+
+
+  }
+
 }
