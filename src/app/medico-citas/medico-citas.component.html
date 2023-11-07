@@ -1,1 +1,68 @@
-<p>medico-citas works!</p>
+<div class="container mt-5">
+    <h1 class="display-4">Citas Pendientes</h1>
+  
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Fecha">
+          <button class="btn btn-primary">Filtrar por fecha</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="ID del Cliente">
+          <button class="btn btn-primary">Filtrar por id del cliente</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Nombre del Cliente">
+          <button class="btn btn-primary">Filtrar por nombre del cliente</button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Motivo</th>
+          <th scope="col">ID Paciente</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Nombre Paciente</th>
+          <th scope="col">ID Cita</th>
+          <th scope="col">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citas" (click)="seleccionarCita(cita)" [class.selected]="citaSeleccionada === cita">
+          <td>{{ cita.motivo }}</td>
+          <td>{{ cita.idPaciente }}</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{ cita.hora }}</td>
+          <td>{{ cita.nombrePaciente }}</td>
+          <td>{{ cita.idCita }}</td>
+          <td>
+            <input type="checkbox" [checked]="citaSeleccionada === cita">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+     <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-success btn-block">Atender cita seleccionada</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-danger btn-block">Deshacer</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+
+    <button (click)="regresarMedicoGeneral()" class="btn btn-danger btn-block">Volver</button>
+
+
+</footer>
+  

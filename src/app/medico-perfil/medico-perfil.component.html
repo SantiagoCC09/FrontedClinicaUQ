@@ -1,1 +1,41 @@
-<p>medico-perfil works!</p>
+<div class="container mt-5">
+    <h1 class="display-4">Mi Perfil</h1>
+  
+    <div class="form-group row">
+      <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+      <div class="col-sm-10">
+        <span>{{ nombre }}</span>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-10">
+        <span>{{ email }}</span>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
+      <div class="col-sm-10">
+        <span>{{ telefono }}</span>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="especializacion" class="col-sm-2 col-form-label">Especialización:</label>
+      <div class="col-sm-10">
+        <span>{{ especializacion }}</span>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="residencia" class="col-sm-2 col-form-label">Residencia:</label>
+      <div class="col-sm-10">
+        <span>{{ residencia }}</span>
+      </div>
+    </div>
+  
+    <button type="button" (click)="regresarMedicoGeneral()" class="btn btn-primary btn-lg btn-block">Volver</button>
+  </div>
+  

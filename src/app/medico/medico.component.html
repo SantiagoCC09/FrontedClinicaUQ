@@ -1,5 +1,7 @@
-
 <head>
+
+
+
 
 
 
@@ -7,24 +9,24 @@
 <body>
 <div class="container mt-5 bg-dark text-light p-4">
     <h1 class="display-4">Perfil de Médico</h1>
-  
+ 
     <div class="row mt-4">
       <div class="col-md-3">
-        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/mi-perfil">Mi Perfil</button>
+        <button class="btn btn-primary btn-block mb-2" (click)="showTab('medico-perfil')">Mi Perfil</button>
       </div>
       <div class="col-md-3">
-        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/citas">Citas</button>
+        <button class="btn btn-primary btn-block mb-2" (click)="showTab('medico-citas')">Citas</button>
       </div>
       <div class="col-md-3">
-        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/historial">Historial</button>
+        <button class="btn btn-primary btn-block mb-2" (click)="showTab('medico-historial')">Historial</button>
       </div>
       <div class="col-md-3">
-        <button class="btn btn-primary btn-block mb-2" routerLink="/medico-perfil/disponibilidad">Disponibilidad</button>
+        <button class="btn btn-primary btn-block mb-2" (click)="showTab('medico-disponibilidad')">Disponibilidad</button>
       </div>
     </div>
-  
-    <router-outlet></router-outlet>
+ 
   </div>
+
 
   <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
@@ -54,21 +56,22 @@
   </div>
 
 
-
-
 </body>
 
+
 <footer>
+
 
     <p>Clinica XYZ</p>
     <div>
 
+
         <button (click)="regresarMedicoGeneral()">terminarSesion</button>
 
-    </div>
-    
 
+    </div>
+   
 
 </footer>
 
-  
+

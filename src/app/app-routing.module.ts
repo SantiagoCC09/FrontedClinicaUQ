@@ -32,7 +32,7 @@ const routes: Routes = [
 
 
   {path: "medico", component: MedicoComponent},
-  {path: "medico-prefil", component: MedicoPerfilComponent},
+  {path: "medico-perfil", component: MedicoPerfilComponent},
   {path: "medico-disponibilidad", component: MedicoDisponibilidadComponent},
   {path: "medico-historial", component: MedicoHistorialComponent},
   {path: "medico-citas", component: MedicoCitasComponent},
