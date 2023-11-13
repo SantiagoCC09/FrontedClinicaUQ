@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Buffer } from "buffer";
+import { TokenDTO } from '../modelo/token-dto';
+
 const TOKEN_KEY = "AuthToken";
 @Injectable({
   providedIn: 'root'
@@ -22,13 +24,17 @@ export class TokenService {
     }
     return false;
   }
-  public login(token: string) {
-    this.setToken(token);
-    this.router.navigate(["/"]);
+  public login(tokenDTO: TokenDTO) {
+    this.setToken(tokenDTO.token);
+    if (tokenDTO.tipoUsuario === 'paciente') {
+      this.router.navigate(['/paciente']);
+    } else if (tokenDTO.tipoUsuario === 'medico') {
+      this.router.navigate(['/medico']);
+    }
   }
   public logout() {
     window.sessionStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/"]);
   }
   private decodePayload(token: string): any {
     const payload = token!.split(".")[1];

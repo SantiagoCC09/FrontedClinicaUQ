@@ -1,4 +1,5 @@
 <button (click)="registrar()">
+    
     <div>
         <label>Cédula: </label>
         <input type="text" name="cedulaPaciente" [(ngModel)]="registroPacienteDTO.cedulaPaciente" />
@@ -59,7 +60,8 @@
             <input type="password" name="confirmarPassword" [(ngModel)]="registroPacienteDTO.confirmarPassword"
                 required />
         </div>
+
+  
         <p *ngIf="!sonIguales()">Las contraseñas no coinciden</p>
-        <button type="submit" [disabled]="f.invalid || !sonIguales()">Registrarse</button>
+        <button type="submit" [disabled]="!sonIguales()">Registrarse</button>
         <app-alerta [alerta]="alerta"></app-alerta>
-    </button>

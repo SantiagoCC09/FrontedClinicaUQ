@@ -4,7 +4,10 @@ import { RegistroPacienteDTO } from 'src/app/modelo/registro-paciente-dto';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ClinicaService } from 'src/app/servicios/clinica.service';
 import { ImagenService } from 'src/app/servicios/imagen.service';
-
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { MensajeDTO } from 'src/app/modelo/mensaje-dto';
+import { tap } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -19,21 +22,40 @@ export class RegistroComponent {
     this.registroPacienteDTO = new RegistroPacienteDTO();
     this.ciudades = [];
     this.cargarCiudades();
+
+
+    
   }
   public registrar() {
-    if (this.registroPacienteDTO.URL_FOTO.length != 0) {
-      this.authService.registrar(this.usuario).subscribe({
-        next: data => {
-          this.alerta = { mensaje: data.respuesta, tipo: "success" };
-        },
-        error: error => {
-          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-        }
-      });
-    } else {
-      this.alerta = { mensaje: "Debe subir una imagen", tipo: "danger" };
+    if (this.registroPacienteDTO.URL_FOTO.length !== 0) {
+      
+      this.authService.registrarPaciente(this.registroPacienteDTO)
+        .pipe(
+          // Convierte la respuesta HTTP a un mensaje DTO
+          tap(data => {
+            const mensajeDTO = {
+              respuesta: data.respuesta,
+            };
+            this.alerta = mensajeDTO.respuesta;
+          }),
+        )
+        .subscribe({
+          next: (data: MensajeDTO) => {
+            // No hace nada, ya que la alerta ya ha sido actualizada
+          },
+          error: (error: HttpErrorResponse) => {
+            this.alerta = { mensaje: error.error.respuesta, tipo: 'danger' };
+          }
+        });
+      } else {
+        this.alerta = { mensaje: 'Debe subir una imagen', tipo: 'danger' };
+      }
     }
-  }
+  
+  
+
+
+  
   public sonIguales(): boolean {
     return this.registroPacienteDTO.password == this.registroPacienteDTO.confirmarPassword;
   }
@@ -70,3 +92,5 @@ export class RegistroComponent {
     }
   }
 }
+
+

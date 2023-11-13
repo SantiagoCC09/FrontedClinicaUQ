@@ -1,14 +1,17 @@
+import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/servicios/token.service';
 @Component({
   selector: 'app-paciente',
   templateUrl: './paciente.component.html',
   styleUrls: ['./paciente.component.css']
+  
 })
 
 export class PacienteComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tokenService:TokenService) {}
 
   paciente = {
     nombre: 'Nombre del Paciente',
@@ -21,7 +24,8 @@ activeTab: string = '';
     this.activeTab = tab;
 
     if (tab === 'terminarSesion'){
-      this.router.navigate(['/login']);
+      this.tokenService.logout();
+      
 
     }else{
       if (tab == 'perfil'){
