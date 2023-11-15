@@ -22,7 +22,8 @@ export class RegistroComponent {
     this.registroPacienteDTO = new RegistroPacienteDTO();
     this.ciudades = [];
     this.cargarCiudades();
-
+    this.cargarEps();
+    this.cargarTipoSangre();
 
     
   }
@@ -69,6 +70,31 @@ export class RegistroComponent {
       }
     });
   }
+
+  private cargarEps() {
+    this.clinicaService.listarEPS().subscribe({
+      next: data => {
+        this.ciudades = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+  }
+
+  private cargarTipoSangre() {
+    this.clinicaService.listarTipoSangre().subscribe({
+      next: data => {
+        this.ciudades = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+  }
+
+
+
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.registroPacienteDTO.URL_FOTO = event.target.files[0].name;
