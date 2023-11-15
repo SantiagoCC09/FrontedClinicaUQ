@@ -34,7 +34,7 @@ export class TokenService {
   }
   public logout() {
     window.sessionStorage.clear();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/inicio"]);
   }
   private decodePayload(token: string): any {
     const payload = token!.split(".")[1];

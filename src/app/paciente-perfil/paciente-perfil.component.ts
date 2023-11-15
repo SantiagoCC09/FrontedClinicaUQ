@@ -19,7 +19,7 @@ export class PacientePerfilComponent {
   rh: string = "";
 
   actualizarDatosPersonales(): void {
-    // Aquí puedes utilizar las propiedades del componente (nombre, email, etc.) para actualizar los datos en el servidor o realizar otras acciones.
+    // bro, las propiedades del componente (nombre, email, etc.) para actualizar los datos en el servidor o realizar otras acciones.
     console.log("Datos actualizados");
   }
 

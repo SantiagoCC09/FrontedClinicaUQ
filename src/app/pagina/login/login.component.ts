@@ -27,7 +27,7 @@ export class LoginComponent {
   
 
   
-  public login(email:string , password: string) {
+  public login() {
 
     this.authService.login(this.loginDTO).subscribe({
       next: (data: TokenDTO) => {
@@ -38,19 +38,6 @@ export class LoginComponent {
         this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
       }
     });
-
-    if (email == "a" && password == "a") {
-
-      this.router.navigate(['/paciente']);
-
-    } else {
-
-      if (email == "b" && password == "b") {
-
-        this.router.navigate(['/medico']);
-
-      }
-    }
 
 
   }
