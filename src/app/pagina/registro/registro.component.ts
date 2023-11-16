@@ -26,15 +26,9 @@ export class RegistroComponent {
     this.tipoSangre = [];
     this.eps = [];
     this.cargarCiudades();
-<<<<<<< HEAD
     this.cargarTipoSangre();
-    this.cargarEPS();
-=======
     this.cargarEps();
     this.cargarTipoSangre();
-
-    
->>>>>>> e72501b3348a0465668faa3ea0887c7ab9351a85
   }
   public registrar() {
     if (this.registroPacienteDTO.URL_FOTO.length !== 0) {
@@ -61,9 +55,6 @@ export class RegistroComponent {
         this.alerta = { mensaje: 'Debe subir una imagen', tipo: 'danger' };
       }
     }
-  
-  
-
 
   
   public sonIguales(): boolean {
@@ -79,7 +70,6 @@ export class RegistroComponent {
       }
     });
   }
-<<<<<<< HEAD
   private cargarTipoSangre() {
     this.clinicaService.listarTipoSangre().subscribe({
       next: data => {
@@ -90,40 +80,17 @@ export class RegistroComponent {
       }
     });
   }
-  private cargarEPS() {
-    this.clinicaService.listarEPS().subscribe({
-      next: data => {
-        this.eps = data.respuesta;
-=======
-
   private cargarEps() {
     this.clinicaService.listarEPS().subscribe({
       next: data => {
         this.ciudades = data.respuesta;
->>>>>>> e72501b3348a0465668faa3ea0887c7ab9351a85
       },
       error: error => {
         console.log(error);
       }
     });
+
   }
-
-<<<<<<< HEAD
-=======
-  private cargarTipoSangre() {
-    this.clinicaService.listarTipoSangre().subscribe({
-      next: data => {
-        this.ciudades = data.respuesta;
-      },
-      error: error => {
-        console.log(error);
-      }
-    });
-  }
-
-
-
->>>>>>> e72501b3348a0465668faa3ea0887c7ab9351a85
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.registroPacienteDTO.URL_FOTO = event.target.files[0].name;
@@ -147,5 +114,3 @@ export class RegistroComponent {
     }
   }
 }
-
-
