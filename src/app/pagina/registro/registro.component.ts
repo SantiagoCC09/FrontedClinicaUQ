@@ -16,15 +16,18 @@ import { FormsModule } from '@angular/forms';
 export class RegistroComponent {
   registroPacienteDTO: RegistroPacienteDTO;
   ciudades: string[];
+  tipoSangre: string[];
+  eps: string[];
   archivos!: FileList;
   alerta!: Alerta;
   constructor(private imagenService: ImagenService, private authService: AuthService, private clinicaService: ClinicaService) {
     this.registroPacienteDTO = new RegistroPacienteDTO();
     this.ciudades = [];
+    this.tipoSangre = [];
+    this.eps = [];
     this.cargarCiudades();
-
-
-    
+    this.cargarTipoSangre();
+    this.cargarEPS();
   }
   public registrar() {
     if (this.registroPacienteDTO.URL_FOTO.length !== 0) {
@@ -69,6 +72,27 @@ export class RegistroComponent {
       }
     });
   }
+  private cargarTipoSangre() {
+    this.clinicaService.listarTipoSangre().subscribe({
+      next: data => {
+        this.tipoSangre = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+  }
+  private cargarEPS() {
+    this.clinicaService.listarEPS().subscribe({
+      next: data => {
+        this.eps = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
+  }
+
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.registroPacienteDTO.URL_FOTO = event.target.files[0].name;

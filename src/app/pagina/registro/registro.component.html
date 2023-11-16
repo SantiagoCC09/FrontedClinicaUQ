@@ -1,18 +1,31 @@
-<button (click)="registrar()">
+<div class="card p-5">
+    <form #f="ngForm" (ngSubmit)="registrar()">
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Cédula: </label>
+            <div class="col-sm-10">
+                <input #cedulaPaciente="ngModel" class="form-control" [ngClass]="cedulaPaciente.invalid &&
     
-    <div>
-        <label>Cédula: </label>
-        <input type="text" name="cedulaPaciente" [(ngModel)]="registroPacienteDTO.cedulaPaciente" />
-    </div>
-    <div>
-        <label>Nombre: </label>
-        <input type="text" name="nombreCompleto" [(ngModel)]="registroPacienteDTO.nombreCompleto" />
-    </div>
-    <div>
-        <label>Teléfono: </label>
-        <input type="text" name="telefono" [(ngModel)]="registroPacienteDTO.telefono" />
-    </div>
-    <div>
+    (cedulaPaciente.dirty || cedulaPaciente.touched) ? 'is-invalid' : ''" type="text" name="cedulaPaciente"
+                    [(ngModel)]="registroPacienteDTO.cedulaPaciente" required maxlength="50" />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Nombre: </label>
+            <div class="col-sm-10">
+                <input #nombreCompleto="ngModel" class="form-control" [ngClass]="nombreCompleto.invalid &&
+
+(nombreCompleto.dirty || nombreCompleto.touched) ? 'is-invalid' : ''" type="nombreCompleto" name="email"
+                    [(ngModel)]="registroPacienteDTO.nombreCompleto" nombreCompleto required />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Teléfono: </label>
+            <div class="col-sm-10">
+                <input #telefono="ngModel" class="form-control" [ngClass]="telefono.invalid &&
+(telefono.dirty || telefono.touched) ? 'is-invalid' : ''" type="text" name="telefono"
+                    [(ngModel)]="registroPacienteDTO.telefono" required />
+            </div>
+        </div>
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">Foto: </label>
             <div class="col-sm-8">
@@ -24,44 +37,78 @@
                 </button>
             </div>
         </div>
-        <div>
-            <label>Ciudad: </label>
-            <select name="ciudadResidencia" required [(ngModel)]="registroPacienteDTO.ciudadResidencia">
-                <option value="" selected>Seleccione una ciudad</option>
-                <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
-            </select>
-        </div>
-        <div>
-            <label>Fecha de nacimiento: </label>
-            <input type="date" name="fechaNacimiento" [(ngModel)]="registroPacienteDTO.fechaNacimiento" />
-        </div>
-        <div>
-            <label>Alergias: </label>
-            <input type="text" name="alergias" [(ngModel)]="registroPacienteDTO.alergias" />
-        </div>
-        <div>
-            <label>EPS: </label>
-            <input type="text" name="eps" [(ngModel)]="registroPacienteDTO.eps" />
-        </div>
-        <div>
-            <label>Tipo de sangre: </label>
-            <input type="text" name="rh" [(ngModel)]="registroPacienteDTO.rh" />
-        </div>
-        <div>
-            <label>Correo electrónico: </label>
-            <input type="email" name="email" [(ngModel)]="registroPacienteDTO.email" />
-        </div>
-        <div>
-            <label>Contraseña: </label>
-            <input type="password" name="password" [(ngModel)]="registroPacienteDTO.password" />
-        </div>
-        <div>
-            <label>Repetir contraseña: </label>
-            <input type="password" name="confirmarPassword" [(ngModel)]="registroPacienteDTO.confirmarPassword"
-                required />
-        </div>
 
-  
-        <p *ngIf="!sonIguales()">Las contraseñas no coinciden</p>
-        <button type="submit" [disabled]="!sonIguales()">Registrarse</button>
-        <app-alerta [alerta]="alerta"></app-alerta>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Ciudad: </label>
+            <div class="col-sm-8">
+                <select name="ciudadResidencia" class="form-control" required
+                    [(ngModel)]="registroPacienteDTO.ciudadResidencia">
+                    <option value="" selected>Seleccione...</option>
+                    <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Fecha de nacimiento: </label>
+            <div class="col-sm-8">
+                <input type="date" name="fechaNacimiento" class="form-control"
+                    [(ngModel)]="registroPacienteDTO.fechaNacimiento" />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Alergias: </label>
+            <div class="col-sm-8">
+                <textarea name="alergias" class="form-control" [(ngModel)]="registroPacienteDTO.alergias" rows="4"
+                    cols="50"></textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">EPS: </label>
+            <div class="col-sm-8">
+                <select name="eps" class="form-control" required [(ngModel)]="registroPacienteDTO.eps">
+                    <option value="" selected>Seleccione...</option>
+                    <option [value]="item" *ngFor="let item of eps; index as i">{{item}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Tipo de Sangre: </label>
+            <div class="col-sm-8">
+                <select name="rh" class="form-control" required [(ngModel)]="registroPacienteDTO.rh">
+                    <option value="" selected>Seleccione...</option>
+                    <option [value]="item" *ngFor="let item of tipoSangre; index as i">{{item}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Correo electrónico: </label>
+            <div class="col-sm-8">
+                <input type="email" name="email" class="form-control" [(ngModel)]="registroPacienteDTO.email" />
+
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Contraseña: </label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" type="password"
+                    [(ngModel)]="registroPacienteDTO.password" />
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Repetir contraseña: </label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="confirmarPassword"
+                    [(ngModel)]="registroPacienteDTO.confirmarPassword" required />
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="!sonIguales()">Las contraseñas no
+            coinciden</div>
+        <button type="submit" [disabled]="f.invalid || !sonIguales()" class="btn btn-primary">
+            <i class="fa-solid fa-circle-plus me-1"></i>
+            Registrarse
+        </button>
+    </form>
+</div>
