@@ -28,7 +28,6 @@ export class RegistroComponent {
     this.cargarCiudades();
     this.cargarTipoSangre();
     this.cargarEps();
-    this.cargarTipoSangre();
   }
   public registrar() {
     if (this.registroPacienteDTO.URL_FOTO.length !== 0) {
@@ -83,7 +82,7 @@ export class RegistroComponent {
   private cargarEps() {
     this.clinicaService.listarEPS().subscribe({
       next: data => {
-        this.ciudades = data.respuesta;
+        this.eps = data.respuesta;
       },
       error: error => {
         console.log(error);
