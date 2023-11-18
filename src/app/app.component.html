@@ -11,11 +11,18 @@
         <li><a routerLink="" class="nav-link px-2 text-secondary">Inicio</a></li>
       </ul>
       
-      <div class="text-end">
-        <button type="button" routerLink="/login" class="btn btn-outline-light
-  me-2">Ingresar</button>
-        <button type="button" routerLink="/registro" class="btn btn-warning">Registrate</button>
-      </div>
+      <header class="p-3 text-bg-dark">
+        <div class="text-end">
+          <ng-container *ngIf="!isLogged(); else loggedIn">
+            <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Ingresar</button>
+            <button type="button" routerLink="/registro" class="btn btn-warning">Registrate</button>
+          </ng-container>
+          <ng-template #loggedIn>
+            <button type="button" routerLink="/perfil" class="btn btn-outline-light me-2">Perfil</button>
+            <button type="button" (click)="logout()" class="btn btn-outline-light me-2">Cerrar sesión</button>
+          </ng-template>
+        </div>
+      </header>      
     </div>
   </div>
 </header>

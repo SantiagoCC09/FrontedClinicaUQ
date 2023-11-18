@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenService } from './servicios/token.service'; // Asegúrate de importar correctamente tu servicio
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontedClinica';
+
+  constructor(private tokenService: TokenService) {}
+
+  isLogged(): boolean {
+    return this.tokenService.isLogged();
+  }
+
+  logout(): void {
+    this.tokenService.logout();
+  }
 }
