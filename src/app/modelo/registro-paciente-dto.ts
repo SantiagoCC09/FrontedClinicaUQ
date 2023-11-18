@@ -10,5 +10,5 @@ export class RegistroPacienteDTO {
     alergias: string = "";
     rh: string = "";
     eps: string = "";
-    URL_FOTO: string = "";
+    URL_Foto: string = "";
 }

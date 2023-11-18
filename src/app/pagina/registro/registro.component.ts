@@ -30,11 +30,9 @@ export class RegistroComponent {
     this.cargarEps();
   }
   public registrar() {
-    if (this.registroPacienteDTO.URL_FOTO.length !== 0) {
-      
+    if (this.registroPacienteDTO.URL_Foto.length !== 0) {
       this.authService.registrarPaciente(this.registroPacienteDTO)
         .pipe(
-          // Convierte la respuesta HTTP a un mensaje DTO
           tap(data => {
             const mensajeDTO = {
               respuesta: data.respuesta,
@@ -44,16 +42,22 @@ export class RegistroComponent {
         )
         .subscribe({
           next: (data: MensajeDTO) => {
-            // No hace nada, ya que la alerta ya ha sido actualizada
+            this.limpiarCampos(); // Limpia los campos después del registro exitoso
           },
           error: (error: HttpErrorResponse) => {
             this.alerta = { mensaje: error.error.respuesta, tipo: 'danger' };
           }
         });
-      } else {
-        this.alerta = { mensaje: 'Debe subir una imagen', tipo: 'danger' };
-      }
+    } else {
+      this.alerta = { mensaje: 'Debe subir una imagen', tipo: 'danger' };
     }
+  }
+
+  private limpiarCampos() {
+    // Limpia los campos y muestra el mensaje de éxito
+    this.registroPacienteDTO = new RegistroPacienteDTO();
+    this.alerta = { mensaje: 'Registro exitoso', tipo: 'success' };
+  }
 
   
   public sonIguales(): boolean {
@@ -92,7 +96,7 @@ export class RegistroComponent {
   }
   public onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      this.registroPacienteDTO.URL_FOTO = event.target.files[0].name;
+      this.registroPacienteDTO.URL_Foto = event.target.files[0].name;
       this.archivos = event.target.files;
     }
   }
@@ -102,7 +106,7 @@ export class RegistroComponent {
       formData.append('file', this.archivos[0]);
       this.imagenService.subir(formData).subscribe({
         next: data => {
-          this.registroPacienteDTO.URL_FOTO = data.respuesta.url;
+          this.registroPacienteDTO.URL_Foto = data.respuesta.url;
         },
         error: error => {
           this.alerta = { mensaje: error.error, tipo: "danger" };

@@ -1,5 +1,9 @@
 <div class="card p-5">
+    <div *ngIf="alerta && alerta.tipo === 'success'" class="alert alert-success" role="alert">
+        {{ alerta.mensaje }}
+    </div>
     <form #f="ngForm" (ngSubmit)="registrar()">
+        
         <div class="mb-3 row">
             <label class="col-sm-2 col-form-label">Cédula: </label>
             <div class="col-sm-10">
