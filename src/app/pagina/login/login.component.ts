@@ -32,7 +32,7 @@ export class LoginComponent {
     this.authService.login(this.loginDTO).subscribe({
       next: (data: TokenDTO) => {
         this.tokenService.login(data);
-        
+        this.router.navigate(['/']);
       },
       error: error => {
         this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
