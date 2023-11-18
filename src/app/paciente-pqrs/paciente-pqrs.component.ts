@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { PacienteService } from '../servicios/paciente.service';
+import { PqrDTO } from '../modelo/pqr-dto';
 
 @Component({
   selector: 'app-paciente-pqrs',
@@ -8,11 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./paciente-pqrs.component.css']
 })
 export class PacientePqrsComponent {
-  constructor(private router: Router) {}
+
+  listaPqr: PqrDTO[] = [];
+
+  constructor(private router: Router, private pacienteService: PacienteService ) {}
+  
   
   asunto: string = '';
   descripcion: string = '';
   mensajes: { emisor: string; contenido: string }[] = [];
+
+  idPaciente =0;
+
+  
 
   enviarPQRS() {
     // Agrega el mensaje del usuario a la lista de mensajes
@@ -30,6 +39,21 @@ export class PacientePqrsComponent {
 
 
     this.router.navigate(['/paciente']);
+
+
+  }
+
+
+  cargarPqr (){
+
+    this.pacienteService.listarPQRSPaciente(this.idPaciente).subscribe({
+      next: data => {
+       this.listaPqr = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
 
 
   }

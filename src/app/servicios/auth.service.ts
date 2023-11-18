@@ -17,11 +17,15 @@ export class AuthService {
 
   public registrarPaciente(paciente: RegistroPacienteDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/registrarse`, paciente);
+
+
+
     
   }
   
-  public login(loginDTO: LoginDTO): Observable<TokenDTO> {
-    return this.http.post<TokenDTO>(`${this.authURL}/login`, loginDTO);
+  public login(loginDTO: LoginDTO): Observable<MensajeDTO> {
+
+    return this.http.post<MensajeDTO>(`${this.authURL}/login`, loginDTO);
   }
   
 

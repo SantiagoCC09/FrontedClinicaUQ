@@ -27,23 +27,16 @@ export class LoginComponent {
   
 
   
-  public login() {
-
+  public login(){
     this.authService.login(this.loginDTO).subscribe({
-      next: (data: TokenDTO) => {
-        this.tokenService.login(data);
-        this.router.navigate(['/']);
-      },
-      error: error => {
-        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
-      }
-    });
-
-
+    next: data => {
+    //llega vacío el tokebDTO.token
+    this.tokenService.login(data.respuesta.token);
+  },
+  error: error => {
+  this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
   }
-
-
-
-
+  });
+  }
 
 }
