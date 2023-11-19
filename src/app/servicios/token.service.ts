@@ -20,6 +20,8 @@ export class TokenService {
   }
 
   public getToken(): string | null {
+
+
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
@@ -30,15 +32,16 @@ export class TokenService {
     return false;
   }
   public login(token:string){
-
+    
     this.setToken(token);
     this.router.navigate(["/"+this.extractSpecificValue(token,"rol")]);
-
-
-
+    console.log(this.decodePayload(token));
     }
 
-private extractSpecificValue(token: string, propertyName: string): any | null {
+
+
+
+public extractSpecificValue(token: string, propertyName: string): any | null {
   try {
     const payload = token?.split(".")[1];
     const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');

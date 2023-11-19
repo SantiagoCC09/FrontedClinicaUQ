@@ -30,7 +30,6 @@ export class LoginComponent {
   public login(){
     this.authService.login(this.loginDTO).subscribe({
     next: data => {
-    //llega vacío el tokebDTO.token
     this.tokenService.login(data.respuesta.token);
   },
   error: error => {

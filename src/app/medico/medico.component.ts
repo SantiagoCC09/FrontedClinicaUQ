@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from '../servicios/token.service';
 
 
 @Component({
@@ -8,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./medico.component.css']
 })
 export class MedicoComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tokenService:TokenService) {}
 
 
 regresarMedicoGeneral (){
 
 
-  this.router.navigate(['/login']);
+  this.tokenService.logout();
 
 
 }
