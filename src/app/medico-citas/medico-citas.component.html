@@ -1,47 +1,51 @@
 <div class="container mt-5">
-    <h1 class="display-4">Citas Pendientes</h1>
-  
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Fecha">
-          <button class="btn btn-primary">Filtrar por fecha</button>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="ID del Cliente">
-          <button class="btn btn-primary">Filtrar por id del cliente</button>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Nombre del Cliente">
-          <button class="btn btn-primary">Filtrar por nombre del cliente</button>
-        </div>
+  <h1 class="display-4">Citas Pendientes</h1>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <!-- Utiliza type="date" para un input de selección de fecha -->
+        <input [(ngModel)]="fechaFiltro" type="date" class="form-control" placeholder="Fecha">
+        <button class="btn btn-primary" (click)="listarCitasFecha()">Filtrar por fecha</button>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input [(ngModel)]="idClienteFiltro" type="text" class="form-control" placeholder="ID del Cliente">
+        <button class="btn btn-primary" (click)="listarCitasCedulaPaciente()">Filtrar por id del cliente</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input [(ngModel)]="nombreClienteFiltro" type="text" class="form-control" placeholder="Nombre del Cliente">
+        <button class="btn btn-primary" (click)="listarCitasNombrePaciente()">Filtrar por nombre del cliente</button>
+      </div>
+    </div>
+  </div>
+
+
 
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Motivo</th>
-          <th scope="col">ID Paciente</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Hora</th>
-          <th scope="col">Nombre Paciente</th>
-          <th scope="col">ID Cita</th>
-          <th scope="col">Seleccionar</th>
+          <th scope="col">codigoCita</th>
+          <th scope="col">nombrePaciente</th>
+          <th scope="col">fechaCreacion</th>
+          <th scope="col">fechaCita</th>
+          <th scope="col">motivo</th>
+          <th scope="col">cedulaPaciente</th>
+          <th scope="col">codigoPaciente</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cita of citas" (click)="seleccionarCita(cita)" [class.selected]="citaSeleccionada === cita">
-          <td>{{ cita.motivo }}</td>
-          <td>{{ cita.idPaciente }}</td>
-          <td>{{ cita.fecha }}</td>
-          <td>{{ cita.hora }}</td>
+          <td>{{ cita.codigoCita }}</td>
           <td>{{ cita.nombrePaciente }}</td>
-          <td>{{ cita.idCita }}</td>
+          <td>{{ cita.fechaCreacion }}</td>
+          <td>{{ cita.fechaCita }}</td>
+          <td>{{ cita.motivo }}</td>
+          <td>{{ cita.cedulaPaciente }}</td>
+          <td>{{ cita.codigoPaciente }}</td>
           <td>
             <input type="checkbox" [checked]="citaSeleccionada === cita">
           </td>

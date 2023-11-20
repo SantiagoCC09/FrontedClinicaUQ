@@ -13,6 +13,10 @@ export class PacienteComponent {
 
   constructor(private router: Router, private tokenService:TokenService) {}
 
+
+
+
+  
   paciente = {
     nombre: 'Nombre del Paciente',
     cedula: '1234567890'

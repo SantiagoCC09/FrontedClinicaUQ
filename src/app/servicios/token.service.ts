@@ -34,6 +34,7 @@ export class TokenService {
   public login(token:string){
     
     this.setToken(token);
+    console.log ("este es el token desde token service : ",token)
     this.router.navigate(["/"+this.extractSpecificValue(token,"rol")]);
     console.log(this.decodePayload(token));
     }

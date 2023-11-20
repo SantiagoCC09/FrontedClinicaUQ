@@ -8,6 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./medico-disponibilidad.component.css']
 })
 export class MedicoDisponibilidadComponent {
+
+
+  ngOnInit(): void {
+    // Lógica que se ejecutará al iniciar el componente
+    this.cargarDisponibilidad();
+  }
+
+
+  
+  cargarDisponibilidad() {
+    throw new Error('Method not implemented.');
+  }
+
+  
   constructor(private router: Router) {}
   regresarMedicoGeneral(){
 

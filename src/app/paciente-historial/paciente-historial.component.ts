@@ -7,6 +7,16 @@ import { Router } from '@angular/router';
 })
 export class PacienteHistorialComponent {
 
+
+  ngOnInit(): void {
+    // Lógica que se ejecutará al iniciar el componente
+    this.cargarDatosHistorial();
+  }
+  cargarDatosHistorial() {
+    throw new Error('Method not implemented.');
+  }
+
+
   constructor(private router: Router) {}
 
   registros = [

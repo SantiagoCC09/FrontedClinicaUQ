@@ -18,6 +18,15 @@ export class MedicoHistorialComponent {
     // solicitud HTTP aquí para obtener los datos
   }
 
+  cargarConsultasTodas(){
+
+
+
+
+  }
+
+
+
   seleccionarConsulta(consulta: any): void {
     this.consultaSeleccionada = consulta;
   }
