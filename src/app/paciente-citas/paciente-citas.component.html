@@ -26,21 +26,21 @@
         <div class="row">
           <div class="col-md-6">
             <label for="descripcion">Describa su situación:</label>
-            <input type="text" id="descripcion" class="form-control mb-3">
-      
+            <input type="text" id="descripcion" class="form-control mb-3" [(ngModel)]="descripcion">
+            
             <label for="fechasDisponibles">Fechas disponibles:</label>
-            <input type="date" id="fechasDisponibles" class="form-control mb-3">
-      
+            <input type="date" id="fechasDisponibles" class="form-control mb-3" [(ngModel)]="fechasDisponibles">
+            
+            
             <label for="horasDisponibles">Lista de horas disponibles:</label>
-            <select id="horasDisponibles" class="form-control mb-3">
+            <select id="horasDisponibles" class="form-control mb-3" [(ngModel)]="horasDisponibles">
               <option value="9-10">9:00 AM - 10:00 AM</option>
               <option value="10-11">10:00 AM - 11:00 AM</option>
-              <!-- Muchachos, aquí se agrega más opciones según sea necesario-->
             </select>
       
             <button type="button" class="btn btn-danger mb-2">Cancelar Cita</button>
             <button type="button" class="btn btn-warning mb-2">Actualizar Cita</button>
-            <button type="button" class="btn btn-primary">Agregar Cita</button>
+            <button (click)='crearCita()'type="button" class="btn btn-primary">Agregar Cita</button>
           </div>
       
           <div class="col-md-6">
@@ -48,16 +48,16 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">FechaCita</th>
                   <th scope="col">Handle</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let cita of citas" [class.table-primary]="cita === citaSeleccionada" (click)="seleccionarCita(cita)">
                   <th scope="row">{{ cita.id }}</th>
-                  <td>{{ cita.first }}</td>
-                  <td>{{ cita.last }}</td>
+                  <td>{{ cita.descripcion }}</td>
+                  <td>{{ cita.fechaCita}}</td>
                   <td>{{ cita.handle }}</td>
                 </tr>
               </tbody>

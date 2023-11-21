@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PacienteService } from '../servicios/paciente.service';
+import { MensajeDTO } from '../modelo/mensaje-dto';
 @Component({
   selector: 'app-paciente-historial',
   templateUrl: './paciente-historial.component.html',
@@ -12,12 +14,10 @@ export class PacienteHistorialComponent {
     // Lógica que se ejecutará al iniciar el componente
     this.cargarDatosHistorial();
   }
-  cargarDatosHistorial() {
-    throw new Error('Method not implemented.');
-  }
+ 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private pacienteServicio: PacienteService) {}
 
   registros = [
     { id: 1, first: 'Mark', last: 'Otto', handle: '@mdo' },
@@ -37,5 +37,24 @@ export class PacienteHistorialComponent {
   
   
   }
+
+
+  cargarDatosHistorial()  {
+
+    this.pacienteServicio.listarConsultasPaciente().subscribe(
+      (mensajeDTO: MensajeDTO) => {
+        
+        this.registros = mensajeDTO.respuesta;
+      },
+      (error) => {
+        console.error('Error al listar consultas del paciente:', error);
+        // Puedes manejar el error según tus necesidades
+      }
+    );
+
+  }
+
+
+
 
 }
