@@ -84,7 +84,7 @@ export class PacienteService {
       'Authorization': `Bearer ${token}`
     });
     
-    return this.http.get<MensajeDTO>(`${this.userUrl}/obtener-paciente/${codigoPaciente}`)
+    return this.http.get<MensajeDTO>(`${this.userUrl}/obtener-paciente/${codigoPaciente}`,{ headers })
       .pipe(
         catchError((error) => {
           console.error('Error en la llamada HTTP:', error);

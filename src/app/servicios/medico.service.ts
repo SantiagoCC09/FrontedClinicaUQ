@@ -43,6 +43,13 @@ const headers = new HttpHeaders({
 
 }
 
+crearConsulta(){
+
+
+}
+
+
+
 // ya quedó
 listarCitasByFecha(date: Date): Observable<MensajeDTO> {
   let token = this.hallarToken();
@@ -137,25 +144,28 @@ reservarDiaLibre(){
 
 }
 
-
 capturarDatosMedico(): Observable<MensajeDTO> {
-  let token = this.hallarToken();
-  let idMedico = this.tokenService.extractSpecificValue(token, 'id');
+  try {
+    const token = this.hallarToken();
+    const idMedico = this.tokenService.extractSpecificValue(token, 'id');
 
-  if (!token || !idMedico) {
-    // Manejo de error: Token o ID del médico no encontrados
-    return throwError('Token o ID del médico no encontrados');
+    if (!token || !idMedico) {
+      throw new Error('Token o ID del médico no encontrados');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<MensajeDTO>(`${this.userUrl}/obtenerMedico/${idMedico}`, { headers });
+  } catch (error) {
+    console.error('Error en la obtención de datos del médico:', error);
+    return throwError({ mensaje: 'Error en la obtención de datos del médico', error });
   }
-
-  return this.http.get<MensajeDTO>(`${this.userUrl}/obtenerMedico?idMedico=${idMedico}`)
-    .pipe(
-      catchError((error) => {
-        console.error('Error en la llamada HTTP:', error);
-        // se lanza un nuevo error personalizado o devolver un valor predeterminado
-        return throwError('Error en la llamada HTTP');
-      })
-    );
 }
+
+
+
 
 
 

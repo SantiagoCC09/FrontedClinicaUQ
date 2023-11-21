@@ -16,6 +16,7 @@ import { MedicoPerfilComponent } from './medico-perfil/medico-perfil.component';
 import { MedicoDisponibilidadComponent } from './medico-disponibilidad/medico-disponibilidad.component';
 import { MedicoHistorialComponent } from './medico-historial/medico-historial.component';
 import { MedicoCitasComponent } from './medico-citas/medico-citas.component';
+import { LoginGuard } from './guards/permiso.service';
 
 
 const routes: Routes = [
@@ -39,8 +40,9 @@ const routes: Routes = [
 
 
 
-  {path: "**", pathMatch: "full", redirectTo: ""}
-
+  {path: "**", pathMatch: "full", redirectTo: ""},
+  { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
+  { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] }
 
 
 ];

@@ -8,6 +8,18 @@ const TOKEN_KEY = "AuthToken";
   providedIn: 'root'
 })
 export class TokenService {
+  getEmail(): string {
+    
+    let token = this.getToken();
+
+    if (token == null){
+
+      token = "";
+    }
+    return this.extractSpecificValue(token,"email");
+
+
+  }
   constructor(private router: Router) { }
 
 

@@ -111,4 +111,17 @@ listarCitasFecha(){
   }
 
 
+
+  atenderCitaSeleccionada(){
+    if (this.citaSeleccionada != null){
+
+
+      //this.medicoService.crearConsulta().subscribe
+    }
+
+
+  }
+
+
+
 }
